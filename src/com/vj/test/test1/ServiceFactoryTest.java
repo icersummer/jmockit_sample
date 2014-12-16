@@ -1,6 +1,7 @@
 package com.vj.test.test1;
 
 import mockit.Mock;
+import mockit.MockClass;
 import mockit.Mockit;
 
 import org.junit.Assert;
@@ -14,9 +15,10 @@ public class ServiceFactoryTest {
 		Assert.assertEquals("mock service", ServiceFactory.getAService());
 	}
 
+	@MockClass(realClass = ServiceFactory.class)
 	private static class ServiceFactoryStub {
 		@Mock
-		public static String agetAService() {
+		public static String getAService() {
 			return "mock service";
 		}
 	}
